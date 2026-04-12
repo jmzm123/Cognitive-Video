@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "manim": {
+      "source": "smithery.ai",
+      "sourceType": "well-known",
+      "computedHash": "335f501bee5b0cbc519234fbb7b3391c850b6f290b02e4e00b48421bcbe178e6"
+    }
+  }
+}

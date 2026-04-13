@@ -40,7 +40,7 @@ Manim 动画项目，用于帮助人提升认知的视频，每个 Python 文件
 
 代码写在一个文件中，代码分阶段写入。
 
-字体黑体（Heiti SC），**标题必须加粗** `weight=BOLD`
+字体宋体（Songti SC），**标题和正文必须加粗** `weight=BOLD`
 
 ## 3.配色方案
 
@@ -50,7 +50,7 @@ Manim 动画项目，用于帮助人提升认知的视频，每个 Python 文件
 |-----|------|-----|
 | 主标题 | 金色 | `#FFD700` |
 | 正片标题 | 金色 **加粗** | `#FFD700` + `weight=BOLD` |
-| 描述文字 | 纯白 | `#FFFFFF` |
+| 描述文字 | 纯白 **加粗** | `#FFFFFF` + `weight=BOLD` |
 | 放射线 | 金色系渐变 | `#FFD700`, `#FFA500`, `#FF8C00`, `#D4AF37` |
 | 背景 | 纯黑 | `BLACK` |
 
@@ -71,7 +71,7 @@ Manim 动画项目，用于帮助人提升认知的视频，每个 Python 文件
 ```python
 title = Text(
     "标题文字",
-    font="Heiti SC",
+    font="Songti SC",
     font_size=46,
     color="#FFD700",
     weight=BOLD

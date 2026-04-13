@@ -65,9 +65,6 @@ class EmotionalStability7Traits(Scene):
 
     def show_intro(self):
         """片头动画 - 放射线效果"""
-        # 创建放射线（集中线）
-        radiating_lines = self.create_radiating_lines()
-
         # 大标题
         title = Text(
             "情绪稳定到让对手害怕的7个特征",
@@ -77,38 +74,42 @@ class EmotionalStability7Traits(Scene):
         )
         title.move_to(ORIGIN)
 
-        # 放射线先出现（从中心向外生长）
-        self.play(
-            *[Create(line) for line in radiating_lines],
-            run_time=0.8
-        )
-
-        # 标题入场
+        # 标题先全部出来
         self.play(
             Write(title),
             run_time=1.2
         )
-        self.wait(0.5)
+        self.wait(0.3)
+
+        # 创建放射线（从文字中心向外射出）
+        radiating_lines = self.create_radiating_lines()
+
+        # 放射线出现并射出去
+        self.play(
+            *[Create(line) for line in radiating_lines],
+            run_time=0.6
+        )
+        self.wait(0.2)
 
         # 放射线扩散消失，标题缩小移到顶部
         self.play(
-            *[line.animate.scale(2).set_opacity(0) for line in radiating_lines],
+            *[line.animate.scale(2.5).set_opacity(0) for line in radiating_lines],
             title.animate.scale(0.5).move_to(UP * 3.5),
             run_time=0.8
         )
         self.wait(0.2)
 
     def create_radiating_lines(self):
-        """创建放射线/集中线效果"""
+        """创建放射线/集中线效果 - 从文字边缘射出"""
         lines = VGroup()
         n_lines = 36  # 放射线数量
 
         for i in range(n_lines):
             angle = 2 * PI * i / n_lines
 
-            # 线条从屏幕中心附近开始，延伸到边缘
-            inner_r = 1.5  # 内半径（靠近中心）
-            outer_r = 8    # 外半径（超出屏幕）
+            # 线条从文字边缘开始，延伸到屏幕外
+            inner_r = 2.8  # 内半径（文字边缘附近）
+            outer_r = 10   # 外半径（超出屏幕）
 
             start_x = inner_r * np.cos(angle)
             start_y = inner_r * np.sin(angle)
@@ -121,7 +122,7 @@ class EmotionalStability7Traits(Scene):
                 end=[end_x, end_y, 0],
                 color=WHITE,
                 stroke_width=1.5,
-                stroke_opacity=0.6
+                stroke_opacity=0.7
             )
             lines.add(line)
 

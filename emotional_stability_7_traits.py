@@ -36,7 +36,8 @@ class EmotionalStability7Traits(Scene):
             "情绪稳定到让对手害怕的7个特征",
             font="Heiti SC",
             font_size=30,
-            color="#FFD700"
+            color="#FFD700",
+            weight=BOLD
         )
         header_title.move_to(UP * 3.5)
         self.add(header_title)
@@ -70,7 +71,8 @@ class EmotionalStability7Traits(Scene):
             "情绪稳定到让对手害怕的7个特征",
             font="Heiti SC",
             font_size=60,
-            color="#FFD700"
+            color="#FFD700",
+            weight=BOLD
         )
         title.move_to(ORIGIN)
 
@@ -135,12 +137,13 @@ class EmotionalStability7Traits(Scene):
 
     def show_trait(self, title_text, desc_text, index):
         """展示单个特征"""
-        # 标题（左边70%区域）- 蓝色，左对齐
+        # 标题（左边70%区域）- 蓝色，左对齐，加粗
         title = Text(
             title_text,
             font="Heiti SC",
             font_size=46,
-            color="#4F9EFF"
+            color="#FFD700",
+            weight=BOLD
         )
         title.move_to(LEFT * 4.5 + UP * 1.5)
         title.align_to(LEFT * 6 + UP * 1.5, LEFT)
@@ -608,7 +611,8 @@ class EmotionalStability7Traits(Scene):
             "情绪稳定，是最深不可测的力量",
             font="Heiti SC",
             font_size=42,
-            color="#FFD700"
+            color="#FFD700",
+            weight=BOLD
         )
 
         # 副标题

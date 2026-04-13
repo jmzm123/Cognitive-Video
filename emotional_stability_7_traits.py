@@ -59,7 +59,7 @@ class EmotionalStability7Traits(Scene):
         # 大标题
         title = Text(
             "情绪稳定到让对手害怕的7个特征",
-            font="Heiti SC",
+            font="Songti SC",
             font_size=60,
             color="#FFD700",
             weight=BOLD
@@ -130,7 +130,7 @@ class EmotionalStability7Traits(Scene):
         # 标题（左边70%区域）- 金色，左对齐，加粗
         title = Text(
             title_text,
-            font="Heiti SC",
+            font="Songti SC",
             font_size=46,
             color="#FFD700",
             weight=BOLD
@@ -138,13 +138,14 @@ class EmotionalStability7Traits(Scene):
         title.move_to(LEFT * 4.5 + UP * 1.5)
         title.align_to(LEFT * 6 + UP * 1.5, LEFT)
 
-        # 描述 - 白色，左对齐，与标题对齐
+        # 描述 - 白色，左对齐，与标题对齐，加粗
         desc = Text(
             desc_text,
-            font="Heiti SC",
+            font="Songti SC",
             font_size=32,
             color=WHITE,
-            line_spacing=1.8
+            line_spacing=1.8,
+            weight=BOLD
         )
         desc.move_to(LEFT * 4.5 + DOWN * 0.3)
         desc.align_to(title, LEFT)
@@ -325,13 +326,13 @@ class EmotionalStability7Traits(Scene):
         # 倒计时数字
         numbers = VGroup()
         for i, num in enumerate(["3", "2", "1"]):
-            text = Text(num, font="Heiti SC", font_size=36, color=YELLOW)
+            text = Text(num, font="Songti SC", font_size=36, color=YELLOW)
             text.move_to(RIGHT * 1.5 + UP * (1 - i) * 0.7)
             numbers.add(text)
         group.add(numbers)
 
         # 深呼吸文字
-        breath_text = Text("深呼吸", font="Heiti SC", font_size=28, color=BLUE_C)
+        breath_text = Text("深呼吸", font="Songti SC", font_size=28, color=BLUE_C)
         breath_text.move_to(DOWN * 1.3)
         group.add(breath_text)
 
@@ -397,7 +398,7 @@ class EmotionalStability7Traits(Scene):
             angle = i * PI / 3
             x = 2.3 * np.cos(angle)
             y = 2.3 * np.sin(angle)
-            q = Text("?", font="Heiti SC", font_size=26, color=GRAY)
+            q = Text("?", font="Songti SC", font_size=26, color=GRAY)
             q.move_to([x, y, 0])
             questions.add(q)
         group.add(questions)
@@ -456,7 +457,7 @@ class EmotionalStability7Traits(Scene):
         group.add(nodes)
 
         # "复盘"文字
-        review = Text("复盘", font="Heiti SC", font_size=28, color=GREEN, weight=BOLD)
+        review = Text("复盘", font="Songti SC", font_size=28, color=GREEN, weight=BOLD)
         review.move_to(RIGHT * 1.3)
         group.add(review)
 
@@ -484,7 +485,7 @@ class EmotionalStability7Traits(Scene):
 
         # 中心人物
         person = Circle(radius=0.5, color=WHITE, fill_opacity=0.1, stroke_width=2)
-        face = Text("- _ -", font="Heiti SC", font_size=20, color=WHITE)
+        face = Text("- _ -", font="Songti SC", font_size=20, color=WHITE)
         face.scale(0.6)
         person_face = VGroup(person, face)
         group.add(person_face)
@@ -578,7 +579,7 @@ class EmotionalStability7Traits(Scene):
         group.add(rays)
 
         # "稳"字
-        stable_text = Text("稳", font="Heiti SC", font_size=48, color=GREEN, weight=BOLD)
+        stable_text = Text("稳", font="Songti SC", font_size=48, color=GREEN, weight=BOLD)
         group.add(stable_text)
 
         def create_animation():
@@ -604,7 +605,7 @@ class EmotionalStability7Traits(Scene):
         # 金句
         quote = Text(
             "情绪稳定，是最深不可测的力量",
-            font="Heiti SC",
+            font="Songti SC",
             font_size=42,
             color="#FFD700",
             weight=BOLD
@@ -613,7 +614,7 @@ class EmotionalStability7Traits(Scene):
         # 副标题
         sub = Text(
             "你做到了几个？",
-            font="Heiti SC",
+            font="Songti SC",
             font_size=32,
             color=GRAY_C
         )

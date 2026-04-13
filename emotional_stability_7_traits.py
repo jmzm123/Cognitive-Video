@@ -158,8 +158,10 @@ class EmotionalStability7Traits(Scene):
         self.play(FadeIn(title, shift=UP * 0.2), run_time=0.4)
         # 2. 描述接着出现
         self.play(FadeIn(desc, shift=UP * 0.2), run_time=0.4)
-        # 3. 右边动画最后出现
-        self.play(FadeIn(animation_group, scale=0.8), run_time=0.4)
+
+        # 3. 右边动画的子元素依次入场
+        for element in animation_group:
+            self.play(FadeIn(element, scale=0.8), run_time=0.25)
 
         # 播放特征动画 - 持续动感
         self.play(animation_group.create_animation(), run_time=2)

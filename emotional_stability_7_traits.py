@@ -64,7 +64,10 @@ class EmotionalStability7Traits(Scene):
         return grid
 
     def show_intro(self):
-        """片头动画 - 大标题+光束散开"""
+        """片头动画 - 放射线效果"""
+        # 创建放射线（集中线）
+        radiating_lines = self.create_radiating_lines()
+
         # 大标题
         title = Text(
             "情绪稳定到让对手害怕的7个特征",
@@ -74,64 +77,56 @@ class EmotionalStability7Traits(Scene):
         )
         title.move_to(ORIGIN)
 
-        # 创建光束
-        light_beams = self.create_light_beams()
+        # 放射线先出现（从中心向外生长）
+        self.play(
+            *[Create(line) for line in radiating_lines],
+            run_time=0.8
+        )
 
         # 标题入场
         self.play(
             Write(title),
-            run_time=1.5
+            run_time=1.2
         )
-        self.wait(0.3)
+        self.wait(0.5)
 
-        # 光束从文字中心散开
+        # 放射线扩散消失，标题缩小移到顶部
         self.play(
-            *[beam.animate.scale(3).set_opacity(0) for beam in light_beams],
-            run_time=1.2,
-            rate_func=linear
-        )
-        self.wait(0.3)
-
-        # 标题缩小移到顶部
-        self.play(
+            *[line.animate.scale(2).set_opacity(0) for line in radiating_lines],
             title.animate.scale(0.5).move_to(UP * 3.5),
             run_time=0.8
         )
         self.wait(0.2)
 
-    def create_light_beams(self):
-        """创建光束效果"""
-        beams = VGroup()
-        n_beams = 12
-        colors = ["#FFC000", "#FF6B35", "#4F9EFF", "#00C853", "#FF4081", "#7C4DFF"]
+    def create_radiating_lines(self):
+        """创建放射线/集中线效果"""
+        lines = VGroup()
+        n_lines = 36  # 放射线数量
 
-        for i in range(n_beams):
-            angle = 2 * PI * i / n_beams
-            length = 2 + np.random.random() * 1.5
+        for i in range(n_lines):
+            angle = 2 * PI * i / n_lines
 
-            # 光束起点（文字边缘）
-            start_r = 0.5
-            start_x = start_r * np.cos(angle)
-            start_y = start_r * np.sin(angle)
+            # 线条从屏幕中心附近开始，延伸到边缘
+            inner_r = 1.5  # 内半径（靠近中心）
+            outer_r = 8    # 外半径（超出屏幕）
 
-            # 光束终点
-            end_x = length * np.cos(angle)
-            end_y = length * np.sin(angle)
+            start_x = inner_r * np.cos(angle)
+            start_y = inner_r * np.sin(angle)
+            end_x = outer_r * np.cos(angle)
+            end_y = outer_r * np.sin(angle)
 
-            # 创建锥形光束
-            beam = Polygon(
-                [start_x, start_y, 0],
-                [end_x + 0.15 * np.cos(angle + PI/2), end_y + 0.15 * np.sin(angle + PI/2), 0],
-                [end_x + 0.3 * np.cos(angle), end_y + 0.3 * np.sin(angle), 0],
-                [end_x + 0.15 * np.cos(angle - PI/2), end_y + 0.15 * np.sin(angle - PI/2), 0],
-                color=colors[i % len(colors)],
-                fill_opacity=0.7,
-                stroke_width=0
+            # 创建细线
+            line = Line(
+                start=[start_x, start_y, 0],
+                end=[end_x, end_y, 0],
+                color=WHITE,
+                stroke_width=1.5,
+                stroke_opacity=0.6
             )
-            beams.add(beam)
+            lines.add(line)
 
-        self.add(beams)
-        return beams
+        self.add(lines)
+        return lines
 
     def show_trait(self, title_text, desc_text, index):
         """展示单个特征"""
